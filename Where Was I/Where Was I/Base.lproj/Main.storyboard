@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Where_Was_I" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ylm-R0-gBY"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yi0-ba-Dba">
+                                <items>
+                                    <navigationItem title="Where Was I?" id="yjB-Je-1NM">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Yzo-ZP-Vto">
+                                            <connections>
+                                                <action selector="SaveButtonClicked:" destination="BYZ-38-t0r" id="TPj-Wn-thA"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ylm-R0-gBY" firstAttribute="top" secondItem="yi0-ba-Dba" secondAttribute="bottom" id="0mh-wc-SGj"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ylm-R0-gBY" secondAttribute="bottom" id="6id-ra-Efg"/>
+                            <constraint firstAttribute="trailing" secondItem="Ylm-R0-gBY" secondAttribute="trailing" id="85a-2P-JKi"/>
+                            <constraint firstItem="yi0-ba-Dba" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CEJ-f2-l8H"/>
+                            <constraint firstItem="Ylm-R0-gBY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="FK2-B2-ITI"/>
+                            <constraint firstAttribute="trailing" secondItem="yi0-ba-Dba" secondAttribute="trailing" id="kwr-cP-PAu"/>
+                            <constraint firstItem="yi0-ba-Dba" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="sfB-5e-ARz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="Ylm-R0-gBY" id="BmD-zG-7oe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="41.829085457271368"/>
+        </scene>
+    </scenes>
+</document>
