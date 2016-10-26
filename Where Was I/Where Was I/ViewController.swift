@@ -22,7 +22,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        print("test")
+        
+        pinLastLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -34,6 +35,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("Location allowed")
         mapView.showsUserLocation = true
     }
+    
+    func pinLastLocation(){
+        if let oldCoords = DataStore().GetLastLocation(){
+            
+            let annoRem = mapView.annotations.filter{$0 !== mapView.userLocation}
+            mapView.removeAnnotations(annoRem)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate.latitude = Double(oldCoords.latitude)!
+            annotation.coordinate.longitude = Double(oldCoords.longitude)!
+            
+            annotation.title = "I was here!"
+            annotation.subtitle = "Remember?"
+            mapView.addAnnotation(annotation)
+        }
+
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -43,12 +61,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBAction func SaveButtonClicked(_ sender: AnyObject) {
         let coord = locationManager.location?.coordinate
         
+        
+        
         if let lat = coord?.latitude{
-            print("Lati: " + String(lat))
+            if let long = coord?.longitude{
+                DataStore().StoreDataPoint(latitude: String(lat), longitude:String(long))
+                pinLastLocation()
+            }
         }
-        if let long = coord?.longitude{
-            print("Long: " + String(long))
-        }
+        
+        
     }
 
     
